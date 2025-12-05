@@ -1,0 +1,23 @@
+    /* Efecto de subrayado sutil al pasar el mouse */
+    .hover-underline {
+        position: relative;
+    }
+    .hover-underline::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--bs-primary); /* Color de acento */
+        transition: width .3s ease-in-out;
+    }
+    .hover-underline:hover::after, .hover-underline.active::after {
+        width: 100%;
+    }
+    
+    /* Clase activa para enlaces de Angular */
+    .nav-link.active {
+        color: var(--bs-primary) !important;
+        font-weight: 500;
+    }

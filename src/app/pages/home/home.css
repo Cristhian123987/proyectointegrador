@@ -1,0 +1,23 @@
+/* src/app/pages/home/home.component.css */
+
+.component-background {
+    /* 3. IMAGEN DE FONDO para los componentes (REEMPLAZAR con la URL de tu imagen de patrón) */
+    background-image: url('../../../assets/fondo2.png');
+    background-size: cover;
+    background-position: center;
+    
+    /* Le damos un color de fondo de respaldo en caso de que la imagen no cargue */
+    background-color: #242424; 
+    
+    border: 1px solid #444444; /* Borde sutil para separarlo del fondo */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Asegura que el texto dentro de estas secciones mantenga el color lila */
+.component-background h1, 
+.component-background h2, 
+.component-background h5,
+.component-background p,
+.component-background ul {
+    color: #E0B0FF !important; 
+}

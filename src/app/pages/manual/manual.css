@@ -1,0 +1,53 @@
+.manual-contenido {
+    color: white;
+}
+
+.manual-contenido h3 {
+    color: #E0B0FF;
+}
+
+.manual-contenido p {
+    color: white;
+}
+
+/* Sidebar Styles */
+.sidebar-wrapper {
+    background-color: #212529;
+    /* Dark background for the whole column */
+    min-height: 100vh;
+    /* Full viewport height */
+    border-right: 1px solid #E0B0FF;
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 20px;
+}
+
+/* Custom List Group Theme */
+.list-group-item {
+    background-color: transparent;
+    /* Transparent so wrapper bg shows */
+    color: #E0B0FF;
+    border: none;
+    /* Remove borders between items */
+    border-bottom: 1px solid rgba(224, 176, 255, 0.2);
+    /* Subtle separator */
+    transition: all 0.3s ease;
+    border-radius: 0 !important;
+    /* Square corners */
+}
+
+.list-group-item:hover {
+    background-color: rgba(224, 176, 255, 0.1);
+    color: #fff;
+}
+
+.list-group-item.active {
+    background-color: #E0B0FF;
+    color: #000;
+    font-weight: bold;
+}

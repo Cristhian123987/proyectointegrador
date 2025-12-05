@@ -1,0 +1,56 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    
+    background-image: url('../src/assets/imagen\ \(1\).png');
+    background-size: cover;
+    background-position: center center;
+}
+
+body {
+    background-color: transparent; 
+    
+    /* CAMBIO: Texto general a blanco */
+    color: #FFFFFF;
+}
+
+h1, h2, h5 {
+    /* Títulos se mantienen en Lila brillante */
+    color: #E0B0FF !important; 
+}
+
+body p, body li {
+    /* CAMBIO: Párrafos y listas a blanco */
+    color: #FFFFFF !important; 
+}
+
+.text-primary, a {
+    /* CAMBIO: Enlaces y primary text a blanco */
+    color: #FFFFFF !important;
+}
+
+.navbar, .navbar a, .navbar-brand, .navbar-nav .nav-link {
+    /* Navbar se mantiene en blanco para contraste */
+    color: #FFFFFF !important;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent; 
+    min-height: 100vh; 
+}
+
+.page-container {
+    flex-grow: 1; 
+}
+
+/* REGLA AGREGADA: Fija la altura de las imágenes del carrusel */
+.carousel-inner .d-block.w-100 {
+    height: 400px !important;
+    width: 100% !important;
+    object-fit: cover;
+}

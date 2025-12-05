@@ -1,0 +1,9 @@
+.contact-card {
+    background-image: url('../../../assets/fondo1.png');
+    background-size: cover;
+    background-position: center;
+
+    width: 100%;         
+    height: auto;         
+}
+

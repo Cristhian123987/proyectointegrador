@@ -1,0 +1,78 @@
+/* Formulario de Captura de Datos */
+.formulario-fondo {
+    background-image: url('../../../assets/imagen\ \(1\).png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.formulario-fondo::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
+    z-index: 0;
+}
+
+.formulario-fondo .card-body,
+.formulario-fondo .card-header {
+    position: relative;
+    z-index: 1;
+}
+
+/* Mensaje de Éxito */
+.exito-fondo {
+    background-image: url('../../../assets/fondo1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.exito-fondo::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 128, 0, 0.3);
+    border-radius: 0.5rem;
+    z-index: 0;
+}
+
+.exito-fondo > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Mensaje de Error */
+.error-fondo {
+    background-image: url('../../../assets/imagen\ \(1\).png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.error-fondo::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(255, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    z-index: 0;
+}
+
+.error-fondo > * {
+    position: relative;
+    z-index: 1;
+}

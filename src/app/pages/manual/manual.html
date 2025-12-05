@@ -1,0 +1,31 @@
+<div class="container-fluid p-0"> <!-- Removed padding to touch edges -->
+    <div class="row g-0"> <!-- g-0 removes gutters -->
+
+        <!-- Menú lateral -->
+        <div class="col-md-2 sidebar-wrapper">
+            <div class="list-group sidebar-sticky rounded-0">
+                <h4 class="text-center mt-3 mb-3" style="color: #E0B0FF;">Manual</h4>
+                <button *ngFor="let s of secciones" class="list-group-item list-group-item-action"
+                    (click)="cambiarSeccion(s.id)" [class.active]="s.id === seccionActual">
+                    {{ s.titulo }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección -->
+        <div class="col-md-10">
+            <h2 class="text-primary text-center mb-3 mt-3" style="color: #E0B0FF !important"><b>Manual de Usuario</b>
+            </h2>
+
+            <ng-container *ngFor="let s of secciones">
+                <div *ngIf="s.id === seccionActual" class="text-center manual-contenido p-3">
+                    <h3>{{ s.titulo }}</h3>
+                    <img [src]="s.imagen" class="img-fluid mb-2 shadow-lg rounded"
+                        style="max-height: 50vh; width: auto;" alt="{{ s.titulo }}">
+                    <p class="lead mb-0">{{ s.descripcion }}</p>
+                </div>
+            </ng-container>
+        </div>
+
+    </div>
+</div>
