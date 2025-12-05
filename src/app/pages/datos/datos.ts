@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, NgZone } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -32,6 +32,7 @@ interface Producto {
 export class Datos implements OnInit {
   private router = inject(Router);
   private supabaseService = inject(SupabaseService);
+  private ngZone = inject(NgZone);
 
   formData: FormData = {
     nombre: '',
@@ -82,13 +83,17 @@ export class Datos implements OnInit {
       try {
         await this.supabaseService.insertContact(datosParaBD);
         console.log('--- SOLICITUD ENVIADA A SUPABASE ---');
-        this.envioExitoso = true;
+        this.ngZone.run(() => {
+          this.envioExitoso = true;
+          this.isSubmitting = false;
+        });
         localStorage.removeItem(SELECTED_PRODUCT_KEY);
       } catch (error: any) {
         console.error('Error enviando a Supabase:', error);
-        alert(`Hubo un error al enviar tu solicitud: ${error.message || JSON.stringify(error)}`);
-      } finally {
-        this.isSubmitting = false;
+        this.ngZone.run(() => {
+          alert(`Hubo un error al enviar tu solicitud: ${error.message || JSON.stringify(error)}`);
+          this.isSubmitting = false;
+        });
       }
 
     } else {
