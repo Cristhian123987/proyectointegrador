@@ -43,6 +43,8 @@ export class Datos implements OnInit {
   productoSeleccionado: Producto | null = null;
   envioExitoso: boolean = false;
 
+  isSubmitting: boolean = false;
+
   constructor() {
     console.log('Datos component constructor called');
   }
@@ -67,6 +69,7 @@ export class Datos implements OnInit {
    */
   async enviarInformacion(form: NgForm): Promise<void> {
     if (form.valid && this.productoSeleccionado) {
+      this.isSubmitting = true;
 
       const datosParaBD = {
         nombre: this.formData.nombre,
@@ -84,6 +87,8 @@ export class Datos implements OnInit {
       } catch (error: any) {
         console.error('Error enviando a Supabase:', error);
         alert(`Hubo un error al enviar tu solicitud: ${error.message || JSON.stringify(error)}`);
+      } finally {
+        this.isSubmitting = false;
       }
 
     } else {
