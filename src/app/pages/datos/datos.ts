@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, NgZone } from '@angular/core';
+import { Component, OnInit, inject, NgZone, ChangeDetectorRef } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -33,6 +33,7 @@ export class Datos implements OnInit {
   private router = inject(Router);
   private supabaseService = inject(SupabaseService);
   private ngZone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
 
   formData: FormData = {
     nombre: '',
@@ -69,8 +70,11 @@ export class Datos implements OnInit {
    * Procesa el envío del formulario.
    */
   async enviarInformacion(form: NgForm): Promise<void> {
+    console.log('enviarInformacion called');
     if (form.valid && this.productoSeleccionado) {
+      console.log('Form valid, starting submission...');
       this.isSubmitting = true;
+      this.cdr.detectChanges(); // Force update to show spinner
 
       const datosParaBD = {
         nombre: this.formData.nombre,
@@ -81,18 +85,25 @@ export class Datos implements OnInit {
       };
 
       try {
+        console.log('Calling supabaseService.insertContact...');
         await this.supabaseService.insertContact(datosParaBD);
         console.log('--- SOLICITUD ENVIADA A SUPABASE ---');
+
         this.ngZone.run(() => {
+          console.log('Inside ngZone run (success)');
           this.envioExitoso = true;
           this.isSubmitting = false;
+          this.cdr.detectChanges(); // Force update to show success message
+          console.log('State updated: envioExitoso=', this.envioExitoso, 'isSubmitting=', this.isSubmitting);
         });
         localStorage.removeItem(SELECTED_PRODUCT_KEY);
       } catch (error: any) {
         console.error('Error enviando a Supabase:', error);
         this.ngZone.run(() => {
+          console.log('Inside ngZone run (error)');
           alert(`Hubo un error al enviar tu solicitud: ${error.message || JSON.stringify(error)}`);
           this.isSubmitting = false;
+          this.cdr.detectChanges(); // Force update to reset button
         });
       }
 
